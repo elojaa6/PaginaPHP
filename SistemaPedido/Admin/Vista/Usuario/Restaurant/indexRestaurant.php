@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Gestion Usuario</title>
+  <title>Gestion Restaurant</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -52,7 +52,7 @@
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
       <div class="logo me-auto">
-        <h1><a href="index.html">Delicious</a></h1>
+        <h1><a href="">Delicious</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -102,7 +102,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <h2>Ingresar</h2>
           <ol>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="">Home</a></li>
             <li>Ingresar</li>
           </ol>
         </div>
@@ -110,41 +110,95 @@
       </div>
     </section><!-- End Breadcrumbs Section -->
 
+    
+
     <section id="book-a-table" class="book-a-table">
-      <table style="width:100%"> 
-        <tr>
-            <th>Nombre</th> 
-            <th>Descripcion</th> 
-            <th>Precio</th>
-            <th>Estado</th> 
-            <th>Foto</th>
-        </tr>
+      <div class="container">
 
-        <?php include '../../../config/conexionBD.php'; 
-        $sql = "SELECT * FROM productos"; 
-        $result = $conn->query($sql); 
+        <div class="section-title">
+          <h2>Listado d<span>e Productos</span></h2>
+        </div>
 
-        if ($result->num_rows > 0) {
+        <section>
+          <div class="container" id="main">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="pull-right">
+                  <a href="registrarProducto.php" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>Nuevo</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-            while($row = $result->fetch_assoc()) { 
-                echo "<tr>"; 
-                echo " <td>" . $row['nombre'] ."</td>"; 
-                echo " <td>" . $row['descripcion'] . "</td>"; 
-                echo " <td>" . $row['precio'] . "</td>"; 
-                echo " <td>" . $row['estado'] . "</td>"; 
-                echo " <td>" . $row['foto'] . "</td>";
-                echo "</tr>";
-            }
-        } else {
-            echo "<tr>";
-            echo " <td colspan='7'> No existen productos registrados en el sistema </td>";
-            echo "</tr>";
-        }    
-        $conn->close();
+        <form>
+        <div class="row">
+        <div class="col-md-12">
+          <fieldset>
+            <legend>Listado de Productos</legend>
+            <table class="table table-bordered">
+              <thead> 
+                <tr>
+                  <th>#</th>
+                  <th>Nombre</th> 
+                  <th>Descripcion</th> 
+                  <th>Precio</th>
+                  <th>Estado</th> 
+                  <th class="text-center">Foto</th>
+                </tr>
+              </thead> 
+              <tbody>
+              <?php 
+                    include 'conexionBD.php'; 
+                    $sql = "SELECT * FROM productos"; 
+                    $result = $conn->query($sql); 
 
-    ?>
-    </table>
+                    if ($result->num_rows > 0) {
+
+                        while($row = $result->fetch_assoc()) { 
+                            echo "<tr>";
+                            echo " <td>" . $row["id"] . "</td>";
+                            echo " <td>" . $row['nombre'] ."</td>"; 
+                            echo " <td>" . $row['descripcion'] . "</td>"; 
+                            echo " <td>" . $row['precio'] . "</td>";
+                            echo " <td>" . $row['estado'] . "</td>";
+                            echo " <td>" . $row['foto'] . "</td>";
+                            echo " <td><a class='btn btn-danger btn-sm' href='/SistemaPedido/Admin/Controladores/Usuario/Restaurant/eliminarProducto.php?id=" . $row['id'] ."'>Eliminar</a></td>";
+                            echo " <td><a class='btn btn-success btn-sm' href='../../Controladores/Admin/actualizarCliente.php?id=" . $row['id'] ."'>Actualizar</a></td>";
+
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr>";
+                        echo " <td colspan='7'> No existen usuarios registradas en el sistema </td>";
+                        echo "</tr>";
+                    }    
+                    $conn->close();
+                  
+                  ?>
+                <tr>
+                    <td>#</td>
+                    <td>Nombre</td>
+                    <td>Descripcion</td> 
+                    <td>Precio</td>
+                    <td>Estado</td>
+                    <td>Foto</td> 
+                    <td></td>
+                    <td></td>
+
+                  </tr>
+              </tbody>
+            </table>
+          </fieldset>
+        </div>
+      </div>
+        </form>
+
+      </div>
     </section><!-- End Book A Table Section -->
+
+
+    
 
   </main><!-- End #main -->
 

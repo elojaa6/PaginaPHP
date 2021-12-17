@@ -5,27 +5,29 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Inner Page - Delicious Bootstrap Template</title>
+  <title>Gestion Restaurant</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  
+  <link href="/SistemaPedido/Public/VIsta/assets/img/favicon.png" rel="icon">
+  <link href="/SistemaPedido/Public/VIsta/assets/img/favicon.png" rel="icon">
+  <link href="/SistemaPedido/Public/VIsta/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="/SistemaPedido/Public/VIsta/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="/SistemaPedido/Public/VIsta/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/SistemaPedido/Public/VIsta/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/SistemaPedido/Public/VIsta/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/SistemaPedido/Public/VIsta/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/SistemaPedido/Public/VIsta/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="/SistemaPedido/Public/VIsta/assets/css/style.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: Delicious - v4.7.0
@@ -50,14 +52,14 @@
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
       <div class="logo me-auto">
-        <h1><a href="index.php">Delicious</a></h1>
+        <h1><a href="">Delicious</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto " href="index.php">Home</a></li>
+          <li><a class="nav-link scrollto " href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#menu">Menu</a></li>
           <li><a class="nav-link scrollto" href="#specials">Specials</a></li>
@@ -86,7 +88,7 @@
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="innerRegistrar.html" class="book-a-table-btn scrollto">Registrar</a>
+      <a href="/SistemaPedido/Config/Cerrarsesion.php" class="book-a-table-btn scrollto">Salir</a>
 
     </div>
   </header><!-- End Header -->
@@ -100,7 +102,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <h2>Ingresar</h2>
           <ol>
-            <li><a href="index.php">Home</a></li>
+            <li><a href="">Home</a></li>
             <li>Ingresar</li>
           </ol>
         </div>
@@ -108,39 +110,64 @@
       </div>
     </section><!-- End Breadcrumbs Section -->
 
+
     <section id="book-a-table" class="book-a-table">
       <div class="container">
 
         <div class="section-title">
-          <h2>Un Gusto Vol<span>ver A Verlo</span></h2>
-          <p>En caso de no estar Registrado. Hacerlo en la esquina derecha superior</p>
-
+          <h2>Ingresar<span> Productos</span></h2>
         </div>
 
-        <form action="../Controladores/Login.php" method="POST" role="form" >
-          <div class="row">
-            <div class="col-lg-4 col-md-6 form-group mt-3">
-              <input type="email" class="form-control" name="email" id="email" placeholder="Correo Electronico" data-rule="email" data-msg="Ingrese un correo valido">
-              <div class="validate"></div>
-            </div>
-            <div class="col-lg-4 col-md-6 form-group mt-3">
-              <input type="password" class="form-control" name="contrasena" id="contrasena" placeholder="Contraseña" data-rule="minlen:10" data-msg="Ingrese 5 caracteres">
-              <div class="validate"></div>
-            </div>
+        <div class="row">
+          <div class="col-md-12">
+            <form action="/SistemaPedido/Admin/Controladores/Usuario/Restaurant/registrarProducto.php" method="POST"  enctype="multipart/form-data">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="">Nombre Producto</label>
+                  <input type="text" class="form-control" name="nombre" id="nombre" required>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="">Descripcion</label>
+                    <textarea class="form-control" name="descripcion" id="descripcion" cols="20" required></textarea>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="">Precio</label>
+                    <input type="text" class="form-control" name="precio" id="precio" placeholder="0.00" required>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="">Foto</label>
+                    <input type="file" class="form-control" name="foto" id="foto" required>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <input type="submit" name="accion" class="btn btn-primary" value="Registrar">
+              <a href="/SistemaPedido/Admin/Vista/Usuario/Restaurant/indexRestaurant.php" class="btn btn-default">Cancelar</a>
+            </form>
           </div>
-          
-          <div class="mb-3">
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
-          </div>
-          <div class="text-center">
-            <input type="submit" id="login" name="login" value="Ingresar"/>
-          </div>
-        </form>
+        </div>
+
+        
 
       </div>
     </section><!-- End Book A Table Section -->
+
+
+    
 
   </main><!-- End #main -->
 
@@ -172,14 +199,14 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="/SistemaPedido/Public/VIsta/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/SistemaPedido/Public/VIsta/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="/SistemaPedido/Public/VIsta/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/SistemaPedido/Public/VIsta/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/SistemaPedido/Public/VIsta/assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="/SistemaPedido/Public/VIsta/assets/js/main.js"></script>
 
 </body>
 

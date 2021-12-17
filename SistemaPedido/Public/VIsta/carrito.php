@@ -50,14 +50,14 @@
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
       <div class="logo me-auto">
-        <h1><a href="index.php">Delicious</a></h1>
+        <h1><a href="index.html">Delicious</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto " href="index.php">Home</a></li>
+          <li><a class="nav-link scrollto " href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#menu">Menu</a></li>
           <li><a class="nav-link scrollto" href="#specials">Specials</a></li>
@@ -86,7 +86,7 @@
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="innerRegistrar.html" class="book-a-table-btn scrollto">Registrar</a>
+      <a href="innerIngresar.html" class="book-a-table-btn scrollto">Ingresar</a>
 
     </div>
   </header><!-- End Header -->
@@ -98,10 +98,10 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Ingresar</h2>
+          <h2>Registro</h2>
           <ol>
-            <li><a href="index.php">Home</a></li>
-            <li>Ingresar</li>
+            <li><a href="index.html">Home</a></li>
+            <li>Registro</li>
           </ol>
         </div>
 
@@ -112,13 +112,31 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>Un Gusto Vol<span>ver A Verlo</span></h2>
-          <p>En caso de no estar Registrado. Hacerlo en la esquina derecha superior</p>
-
+          <h2>Sea<span> Bienvenido</span></h2>
         </div>
 
-        <form action="../Controladores/Login.php" method="POST" role="form" >
+        <form id="formulario" method="POST" action="../Controladores/Registrar.php" role="form" >
           <div class="row">
+            <div class="col-lg-4 col-md-6 form-group">
+              <input type="text" name="cedula" class="form-control" id="cedula" placeholder="Cedula" data-rule="minlen:10" data-msg="Ingrese 10 numeros">
+              <div class="validate"></div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+              <input type="text" class="form-control" name="nombres" id="nombres" placeholder="Nombre" data-rule="minlen:4" data-msg="Ingrese minimo 4 letras">
+              <div class="validate"></div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+              <input type="text" class="form-control" name="apellidos" id="apellidos" placeholder="Apellido" data-rule="minlen:4" data-msg="Ingrese minimo 4 letras">
+              <div class="validate"></div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-group mt-3">
+              <input type="text" name="direccion" class="form-control" id="direccion" placeholder="Dirrecion" data-rule="minlen:4" data-msg="Ingrese minimo 4 letras">
+              <div class="validate"></div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-group mt-3">
+              <input type="text" class="form-control" name="numero" id="numero" placeholder="Numero Contacto" data-rule="minlen:10" data-msg="Ingrese 10 numeros">
+              <div class="validate"></div>
+            </div>
             <div class="col-lg-4 col-md-6 form-group mt-3">
               <input type="email" class="form-control" name="email" id="email" placeholder="Correo Electronico" data-rule="email" data-msg="Ingrese un correo valido">
               <div class="validate"></div>
@@ -126,6 +144,14 @@
             <div class="col-lg-4 col-md-6 form-group mt-3">
               <input type="password" class="form-control" name="contrasena" id="contrasena" placeholder="Contraseña" data-rule="minlen:10" data-msg="Ingrese 5 caracteres">
               <div class="validate"></div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-group mt-3">
+              <select id="rol" name="rol" class="form-control">
+                <option>Su Rol Es</option>
+                <option value="Cliente">Cliente</option>
+                <option value="Restaurant">Restaurant</option>
+             </select>
+             <div class="validate"></div>
             </div>
           </div>
           
@@ -135,7 +161,7 @@
             <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
           </div>
           <div class="text-center">
-            <input type="submit" id="login" name="login" value="Ingresar"/>
+            <input type="submit" id="crear" name="crear" value="Registrar" />
           </div>
         </form>
 

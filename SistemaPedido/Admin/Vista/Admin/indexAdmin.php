@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Gestion Usuario</title>
+  <title>Gestion Admin</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -110,43 +110,289 @@
       </div>
     </section><!-- End Breadcrumbs Section -->
 
+    
+
     <section id="book-a-table" class="book-a-table">
-      <table style="width:100%"> 
-        <tr>
-            <th>Cedula</th> 
-            <th>Nombres</th> 
-            <th>Apellidos</th> 
-            <th>Dirección</th> 
-            <th>Telefono</th> 
-            <th>Correo</th>
-        </tr>
+      <div class="container">
 
-        <?php include '../../../config/conexionBD.php'; 
-        $sql = "SELECT * FROM clientes"; 
-        $result = $conn->query($sql); 
+        <div class="section-title">
+          <h2>Lis<span>tas</span></h2>
+        </div>
+        <section>
+          <div class="container" id="main">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="pull-right">
+                  <a href="registrarClienteYRestaurant.html" class="btn btn-primary"><span class="glyphicon glyphicon-plus">
+                  </span>Nuevo Cliente/Restaurante</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      <form>
+        <div class="row">
+          <div class="col-md-12">
+            <fieldset>
+              <legend>Listado de Clientes</legend>
+              <table class="table table-bordered">
+                <thead> 
+                  <tr>
+                    <th>#</th>
+                    <th>Cedula</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th> 
+                    <th>Direccion</th> 
+                    <th>Telefono</th>
+                    <th>correo_electronico</th> 
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead> 
+                <tbody>
+                <?php 
+                    include '../../../config/conexionBD.php'; 
+                    $sql = "SELECT * FROM clientes"; 
+                    $result = $conn->query($sql); 
 
-        if ($result->num_rows > 0) {
+                    if ($result->num_rows > 0) {
 
-            while($row = $result->fetch_assoc()) { 
-                echo "<tr>"; 
-                echo " <td>" . $row["cedula"] . "</td>"; 
-                echo " <td>" . $row['nombre'] ."</td>"; 
-                echo " <td>" . $row['apellido'] . "</td>"; 
-                echo " <td>" . $row['direccion'] . "</td>"; 
-                echo " <td>" . $row['telefono'] . "</td>";
-                echo " <td>" . $row['correo_electronico'] . "</td>";
-                echo "</tr>";
-            }
-        } else {
-            echo "<tr>";
-            echo " <td colspan='7'> No existen usuarios registradas en el sistema </td>";
-            echo "</tr>";
-        }    
-        $conn->close();
+                        while($row = $result->fetch_assoc()) { 
+                            echo "<tr>";
+                            echo " <td>" . $row["id"] . "</td>";  
+                            echo " <td>" . $row["cedula"] . "</td>"; 
+                            echo " <td>" . $row['nombre'] ."</td>"; 
+                            echo " <td>" . $row['apellido'] . "</td>"; 
+                            echo " <td>" . $row['direccion'] . "</td>"; 
+                            echo " <td>" . $row['telefono'] . "</td>";
+                            echo " <td>" . $row['correo_electronico'] . "</td>";
+                            echo " <td><a class='btn btn-danger btn-sm' href='/SistemaPedido/Admin/Controladores/Admin/eliminarCliente.php?id=".$row['id']."'>Eliminar</a></td>";
+                            echo " <td><a class='btn btn-success btn-sm' href='actualizarCliente.php?id=".$row['id']."'>Actualizar</a></td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr>";
+                        echo " <td colspan='7'> No existen usuarios registradas en el sistema </td>";
+                        echo "</tr>";
+                    }    
+                    $conn->close();
+                  
+                  ?>
+                  <tr>
+                    <td>#</td>
+                    <td>cedula</td>
+                    <td>Nombre</td>
+                    <td>Apellido</td> 
+                    <td>Direccion</td> 
+                    <td>Telefono</td>
+                    <td>correo_electronico</td> 
+                    <td></td>
+                    <td></td>
 
-    ?>
-    </table>
+                  </tr>
+                </tbody>
+              </table>
+            </fieldset>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <fieldset>
+              <br>
+              <legend>Listado de Restaurantes</legend>
+              <table class="table table-bordered">
+                <thead> 
+                  <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Direccion</th> 
+                    <th>Telefono</th>
+                    <th>correo_electronico</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead> 
+                <tbody>
+                <?php 
+                    include '../../../config/conexionBD.php'; 
+                    $sql = "SELECT * FROM restaurantes"; 
+                    $result = $conn->query($sql); 
+
+                    if ($result->num_rows > 0) {
+
+                        while($row = $result->fetch_assoc()) { 
+                            echo "<tr>";
+                            echo " <td>" . $row["id"] . "</td>";
+                            echo " <td>" . $row['nombre'] ."</td>"; 
+                            echo " <td>" . $row['direccion'] . "</td>"; 
+                            echo " <td>" . $row['telefono'] . "</td>";
+                            echo " <td>" . $row['correo_electronico'] . "</td>";
+                            echo " <td><a class='btn btn-danger btn-sm' href='/SistemaPedido/Admin/Controladores/Admin/eliminarRestaurante.php?id=".$row['id']."'>Eliminar</a></td>";
+                            echo " <td><a class='btn btn-success btn-sm' href='actualizarRestaurante.php?id=".$row['id']."'>Actualizar</a></td>";
+
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr>";
+                        echo " <td colspan='7'> No existen usuarios registradas en el sistema </td>";
+                        echo "</tr>";
+                    }    
+                    $conn->close();
+                  
+                  ?>
+                  <tr>
+                    <td>#</td>
+                    <td>Nombre</td>
+                    <td>Direccion</td> 
+                    <td>Telefono</td>
+                    <td>correo_electronico</td> 
+                    <td></td>
+                    <td></td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </fieldset>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <fieldset>
+              <br>
+              <legend>Listado de Productos</legend>
+              <table class="table table-bordered">
+                <thead> 
+                  <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th> 
+                    <th>Precio</th>
+                    <th>Estado</th>
+                    <th>Foto</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead> 
+                <tbody>
+                <?php 
+                    include '../../../config/conexionBD.php'; 
+                    $sql = "SELECT * FROM productos"; 
+                    $result = $conn->query($sql); 
+
+                    if ($result->num_rows > 0) {
+
+                        while($row = $result->fetch_assoc()) { 
+                            echo "<tr>";
+                            echo " <td>" . $row["id"] . "</td>";
+                            echo " <td>" . $row['nombre'] ."</td>"; 
+                            echo " <td>" . $row['descripcion'] . "</td>"; 
+                            echo " <td>" . $row['precio'] . "</td>";
+                            echo " <td>" . $row['estado'] . "</td>";
+                            echo " <td>" . $row['foto'] . "</td>";
+                            echo " <td><a class='btn btn-danger btn-sm' href='/SistemaPedido/Admin/Controladores/Usuario/Restaurant/eliminarProducto.php?id" . $row['id'] ."'>Eliminar</a></td>";
+                            echo " <td><a class='btn btn-success btn-sm' href='../../Controladores/Admin/actualizarCliente.php?id=" . $row['id'] ."'>Actualizar</a></td>";
+
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr>";
+                        echo " <td colspan='7'> No existen usuarios registradas en el sistema </td>";
+                        echo "</tr>";
+                    }    
+                    $conn->close();
+                  
+                  ?>
+                  <tr>
+                    <td>#</td>
+                    <td>Nombre</td>
+                    <td>Descripcion</td> 
+                    <td>Precio</td>
+                    <td>Estado</td>
+                    <td>Foto</td> 
+                    <td></td>
+                    <td></td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </fieldset>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-12">
+            <fieldset>
+              <br>
+              <legend>Listado de Facturas</legend>
+              <table class="table table-bordered">
+                <thead> 
+                  <tr>
+                    <th>#</th>
+                    <th>Cliente</th>
+                    <th>Restaurant</th> 
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Estado</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead> 
+                <tbody>
+                <?php 
+                    include '../../../config/conexionBD.php'; 
+                    $sql = "SELECT * FROM factura"; 
+                    $result = $conn->query($sql); 
+
+                    if ($result->num_rows > 0) {
+
+                        while($row = $result->fetch_assoc()) { 
+                            echo "<tr>";
+                            echo " <td>" . $row["id"] . "</td>";
+                            echo " <td>" . $row['nombre'] ."</td>"; 
+                            echo " <td>" . $row['restaurant'] . "</td>"; 
+                            echo " <td>" . $row['precio'] . "</td>";
+                            echo " <td>" . $row['cantidad'] . "</td>";
+                            echo " <td>" . $row['estado'] . "</td>";
+                            echo " <td><a class='btn btn-danger btn-sm' href='/SistemaPedido/Admin/Controladores/Admin/eliminarCliente.php?id" . $row['id'] ."'>Eliminar</a></td>";
+                            echo " <td><a class='btn btn-success btn-sm' href='../../Controladores/Admin/actualizarCliente.php?id=" . $row['id'] ."'>Actualizar</a></td>";
+
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr>";
+                        echo " <td colspan='7'> No existen usuarios registradas en el sistema </td>";
+                        echo "</tr>";
+                    }    
+                    $conn->close();
+                  
+                  ?>
+                  <tr>
+                    <td>#</td>
+                    <td>Nombre</td>
+                    <td>Restaurant</td>
+                    <td>Precio</td> 
+                    <td>Cantidad</td>
+                    <td>Estado</td> 
+                    <td></td>
+                    <td></td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </fieldset>
+          </div>
+        </div>
+
+
+
+      </form>
+
+      </div>
     </section><!-- End Book A Table Section -->
+
+    
 
   </main><!-- End #main -->
 

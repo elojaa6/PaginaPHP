@@ -15,7 +15,7 @@
 <body>
 
     <?php //incluir conexión a la base de datos 
-    include '../../Config/conexionBD.php'; 
+    include 'conexionBD.php'; 
 
     $cedula = isset($_POST["cedula"]) ? trim($_POST["cedula"]) : null; 
     $nombres = isset($_POST["nombres"]) ? mb_strtoupper(trim($_POST["nombres"]), 'UTF-8') : null; 
@@ -58,11 +58,8 @@
     
     $conn->close(); 
     
-    if ($option == 'Cliente') {
-        header ("Location: /SistemaPedido/Admin/Vista/Usuario/Cliente/indexCliente.php");
-    }else {
-        header ("Location: /SistemaPedido/Admin/Vista/Usuario/Restaurant/indexRestaurant.php");
-    }
+        header ("Location: /SistemaPedido/Admin/Vista/Admin/indexAdmin.php");
+    
 
     ?>
     
