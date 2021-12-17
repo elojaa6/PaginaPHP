@@ -1,10 +1,7 @@
 # Practica02-Sistema-de-pedidos-en-l-nea-en-PHP
 
 
-CONSEJO ACADÉMICO Aprobación: 2016 / 04 / 06
-Formato: Guía de Práctica de Laboratorio / Talleres / Centros de Simulación
-FORMATO DE INFORME DE PRÁCTICA DE LABORATORIO /
-TALLERES / CENTROS DE SIMULACIÓN – PARA ESTUDIANTES
+
 CARRERA: Computación ASIGNATURA:Programación Hipermedial
 NRO. PRÁCTICA: 2 TÍTULO PRÁCTICA: Resolución de problemas sobre PHP y MySQL
 OBJETIVO ALCANZADO:
