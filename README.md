@@ -15,9 +15,9 @@ ACTIVIDADES DESARROLLADAS
 El diagrama E-R de la solución propuesta.
 
 
-Nombre de la base de datos.
-CONSEJO ACADÉMICO Aprobación: 2016 / 04 / 06
-Formato: Guía de Práctica de Laboratorio / Talleres / Centros de Simulación
+Nombre de la base de datos:Practica2
+
+
 Sentencias SQL de la estructura de la base de datos ́
 --
 -- Base de datos: practica2
@@ -53,9 +53,6 @@ estado int(11) NOT NULL DEFAULT 1
 --
 CREATE TABLE factura_cabecera (
 id int(11) NOT NULL,
-
-CONSEJO ACADÉMICO Aprobación: 2016 / 04 / 06
-Formato: Guía de Práctica de Laboratorio / Talleres / Centros de Simulación
 cliente_id int(11) NOT NULL,
 total decimal(10,2) NOT NULL,
 fecha date NOT NULL,
@@ -94,7 +91,6 @@ id int(11) NOT NULL,
 correo_electronico varchar(50) NOT NULL,
 contrasena varchar(150) NOT NULL,
 estado int(11) NOT NULL DEFAULT 1
-
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 --
 
